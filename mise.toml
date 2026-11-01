@@ -1,0 +1,67 @@
+min_version = "2026.10.12"
+
+[settings]
+experimental = true
+
+[tools]
+node = "26.13.0"
+hk = "2.10.0"
+pitchfork = "2.32.4"
+
+[env]
+_.path = ["{{config_root}}/node_modules/.bin"]
+
+[tasks.install]
+description = "Install project dependencies"
+run = "npm ci"
+
+[tasks.spec]
+description = "Compile the TypeSpec contract into OpenAPI"
+run = "npm run spec:build"
+
+[tasks."api:generate"]
+description = "Generate the Express router and the frontend SDK"
+run = "npm run api:generate"
+
+[tasks.lint]
+description = "Run ESLint and Prettier checks"
+run = "npm run lint"
+
+[tasks.typecheck]
+description = "Type-check every workspace"
+run = "npm run typecheck"
+
+[tasks.test]
+description = "Run tests"
+run = "npm test"
+
+[tasks.check]
+description = "Run every local check"
+run = [
+  { task = "spec" },
+  { task = "lint" },
+  { task = "typecheck" },
+  { task = "test" },
+]
+
+[tasks.build]
+description = "Build the API and the web app"
+run = "npm run build"
+
+[tasks.dev]
+description = "Start the API and web dev daemons"
+run = "mise daemons start"
+
+[tasks."dev:stop"]
+description = "Stop the development daemons"
+run = "mise daemons stop"
+
+[daemons.api]
+run = "npm run dev -w apps/api"
+port = 3001
+ready_port = 3001
+
+[daemons.web]
+run = "npm run dev -w apps/web"
+port = 5173
+ready_port = 5173
