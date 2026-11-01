@@ -1,0 +1,16 @@
+{
+  "name": "@call-calendar/spec",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsp compile .",
+    "generate": "npm run build && openapi-code-generator --input ./openapi/openapi.yaml --input-type openapi3 --output ../../apps/api/src/generated --template typescript-express --schema-builder zod-v4 && openapi-code-generator --input ./openapi/openapi.yaml --input-type openapi3 --output ../../apps/web/src/generated --template typescript-fetch"
+  },
+  "devDependencies": {
+    "@nahkies/openapi-code-generator": "0.26.0",
+    "@typespec/compiler": "1.17.0",
+    "@typespec/http": "1.17.0",
+    "@typespec/openapi3": "1.17.0"
+  }
+}
