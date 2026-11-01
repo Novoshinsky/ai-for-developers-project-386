@@ -35,3 +35,20 @@
 - Не редактировать сгенерированные файлы; менять контракт и запускать
   `mise run api:generate`.
 - Версии инструментов менять только через `mise.toml`.
+
+## Agent skills
+
+### Issue tracker
+
+Issues и спеки живут в GitHub Issues этого репозитория. См.
+`docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Пять канонических ролей: `needs-triage`, `needs-info`, `ready-for-agent`,
+`ready-for-human`, `wontfix`. См. `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single-context: `GLOSSARY.md` в корне и ADR в `docs/adr/`. См.
+`docs/agents/domain.md`.
