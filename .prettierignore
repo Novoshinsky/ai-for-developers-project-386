@@ -1,0 +1,10 @@
+package-lock.json
+node_modules
+dist
+coverage
+packages/spec/openapi
+**/src/generated
+mise.lock
+.github/workflows/hexlet-check.yml
+apps/web/src/components/ui
+apps/web/src/lib/utils.ts

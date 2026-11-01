@@ -1,0 +1,28 @@
+amends "package://github.com/jdx/hk/releases/download/v2.10.0/hk@2.10.0#/Config.pkl"
+
+import "package://github.com/jdx/hk/releases/download/v2.10.0/hk@2.10.0#/Builtins.pkl"
+
+local linters = new Mapping<String, Step> {
+  ["eslint"] = Builtins.eslint
+  ["prettier"] = Builtins.prettier
+  ["trailing-whitespace"] = Builtins.trailing_whitespace
+  ["newlines"] = Builtins.newlines
+}
+
+steps = linters
+
+hooks = new {
+  ["pre-push"] {
+    steps {
+      ["check"] = new Step {
+        check = "mise run check"
+        exclusive = true
+      }
+    }
+  }
+  ["commit-msg"] {
+    steps {
+      ["conventional-commit"] = Builtins.check_conventional_commit
+    }
+  }
+}
